@@ -1,0 +1,25 @@
+<h2>Services</h2>
+
+<div *ngFor="let service of services; index as serviceId">
+
+    <h3>
+        <a [title]="service.name + 'details' " [routerLink]="['/services', serviceId]">
+            {{service.name}}
+        </a>
+
+    </h3>
+
+    <p *ngIf="service.description">
+        Description: {{service.description}}
+    </p>
+
+    <button (click)="share()">
+        Share
+    </button>
+
+    <app-service-alerts
+            [service]="service"
+            (notify)="onNotify()">
+    </app-service-alerts>
+
+</div>
